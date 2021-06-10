@@ -1,0 +1,19 @@
+<h1>Home</h1>
+<p><%= notice %></p>
+<%= link_to 'Create new Post', '/posts/new' %>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Content</th>
+    <th>Image</th>
+  </tr>
+  <% @posts.each do |post| %>
+  <tr>
+    <td><%= post.content %></td>
+    <td><%= post.image.url %></td>
+    <td><%= link_to 'detail', post_path(post.id) %></td>
+    <td><%= link_to 'edit', edit_post_path(post.id) %></td>
+    <td><%= link_to 'delete', post_path(post.id), method: :delete, data:{ confirm: 'Are you sure you want to delete the post?'} %></td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,16 @@
+<h3>以下の内容で、投稿する。</h3>
+<%= form_with(model: @post,local: true, url: posts_path) do |form| %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :image_cache %>
+
+  <p>Content：<%= @post.content %></p>
+  <p>Image：</p><%= image_tag(@post.image.url) if @post.image && @post.image.url %></p>
+
+  <%= form.submit "Submit!"%>
+<% end %>
+
+<%= form_with(model:@post, url:new_post_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "Back", name: 'back'%>
+<% end %>
