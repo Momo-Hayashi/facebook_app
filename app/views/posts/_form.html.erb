@@ -15,6 +15,7 @@
     <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
     <%= form.label :image %><br>
     <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
   </div><br>
   <%= form.submit %><br>
   <%= link_to "Back to Home", posts_path %>
