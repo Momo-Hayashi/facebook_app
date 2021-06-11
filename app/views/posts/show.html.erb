@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
 <p>
+  <strong>User:</strong>
+  <%= @post.user.name %><br>
   <strong>Content:</strong>
   <%= @post.content %><br>
   <strong>Image:</strong>
-  <%= image_tag @post.image.url %>
+  <%= image_tag @post.image.url %><br>
+  <strong>Posted At:</strong>
+  <%= @post.created_at %>
 </p>
 <%= link_to 'Back', posts_path %>

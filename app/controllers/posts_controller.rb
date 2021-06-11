@@ -12,11 +12,11 @@ class PostsController < ApplicationController
     end
   end
   def confirm
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     render :new if @post.invalid?
   end
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if params[:back]
       render :new
     else
@@ -41,9 +41,9 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:content, :image, :image_cache)
+  params.require(:post).permit(:content, :image, :image_cache)
   end
   def set_posts
-    @post = Post.find(params[:id])
+  @post = Post.find(params[:id])
   end
 end
