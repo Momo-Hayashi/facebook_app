@@ -1,22 +1,19 @@
-<div class="container">
-  <h1>Home</h1>
-  <!-- <p><%= notice %></p> -->
-  <%= link_to 'Create new Post', '/posts/new' %>
-  <table>
-    <tr class="row">
-      <th>User</th>
-      <th>Content</th>
-      <th>Image</th>
-    </tr>
-    <% @posts.each do |post| %>
-    <tr class="row">
-      <td class="col-md-3"><%= post.user.name %></td>
-      <td class="col-md-3"><%= post.content %></td>
-      <td class="col-md-3"><%= image_tag post.image.url if post.image && post.image.url %></td>
-      <td class="col-md-1"><%= link_to 'detail', post_path(post.id) %></td>
-      <td class="col-md-1"><%= link_to 'edit', edit_post_path(post.id) %></td>
-      <td class="col-md-1"><%= link_to 'delete', post_path(post.id), method: :delete, data:{ confirm: 'Are you sure you want to delete the post?'} %></td>
-    </tr>
-    <% end %>
-  </table>
-</div>
+<h1>Home</h1>
+  <%= link_to 'Create new Post', '/posts/new', class: "btn btn-warning" %>
+<table class = "index_colum">
+  <tr class="row">
+    <th>User</th>
+    <th>Content</th>
+    <th>Image</th>
+  </tr>
+  <% @posts.each do |post| %>
+  <tr class="row">
+    <td class="col-md-offset-1 col-md-1"><%= post.user.name %></td>
+    <td class="col-md-4"><%= post.content %></td>
+    <td class="col-md-2"><%= image_tag post.image.url if post.image && post.image.url %></td>
+    <td class="col-md-1"><%= link_to 'detail', post_path(post.id) %></td>
+    <td class="col-md-1"><%= link_to 'edit', edit_post_path(post.id) %></td>
+    <td class="col-md-1"><%= link_to 'delete', post_path(post.id), method: :delete, data:{ confirm: 'Are you sure you want to delete the post?'} %></td>
+  </tr>
+  <% end %>
+</table>

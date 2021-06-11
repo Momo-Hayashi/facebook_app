@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>FacebookApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <div class="container-fluid">
+    <head>
+      <title>FacebookApp</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-  <body>
-    <div class="container">
-      <header>
-        <ul>
-        <% if logged_in? %>
-          <li><%= link_to "Home", posts_path %></li>
-          <li><%= link_to "Profile", user_path(current_user.id) %></li>
-          <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Home", posts_path %></li>
-          <li><%= link_to "Sign up", new_user_path %></li>
-          <li><%= link_to "Login", new_session_path %></li>
+    <body>
+
+        <header>
+          <ul>
+          <% if logged_in? %>
+            <li><%= link_to "Home", posts_path %></li>
+            <li><%= link_to "Profile", user_path(current_user.id) %></li>
+            <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Home", posts_path %></li>
+            <li><%= link_to "Sign up", new_user_path %></li>
+            <li><%= link_to "Login", new_session_path %></li>
+          <% end %>
+          </ul>
+        </header>
+        <% flash.each do |key, value| %>
+          <h3><strong><%= content_tag(:div, value, class: "#{key}") %></strong></h3>
         <% end %>
-        </ul>
-      </header>
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
-      <%= yield %>
-      <div class="margin"></div>
-      <footer>
-        <p>運営会社MOOOOOM株式会社<br>
-        © 2021-2021 MOOOOOM Corp.</p>
-      </footer>
-    </div>
-  </body>
+        <%= yield %>
+        <div class="margin"></div>
+        <footer>
+          <p>運営会社MOOOOOM株式会社
+          <br>© 2021-2021 MOOOOOM Corp.</p>
+        </footer>
+    </body>
+  </div>
 </html>
