@@ -5,7 +5,7 @@
   <strong>Content:</strong>
   <%= @post.content %><br>
   <strong>Image:</strong>
-  <%= image_tag @post.image.url %><br>
+  <%= image_tag @post.image.url if @post.image && @post.image.url %><br>
   <strong>Posted At:</strong>
   <%= @post.created_at %>
 </p>
